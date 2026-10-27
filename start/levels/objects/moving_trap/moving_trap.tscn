@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://dt8v8arvkroar"]
+
+[ext_resource type="Script" uid="uid://d1ldaft83ewlq" path="res://levels/objects/moving_trap/moving_trap.gd" id="1_svnl6"]
+[ext_resource type="ArrayMesh" uid="uid://cor2jh4dshw3c" path="res://assets/models/objects/trap.tres" id="1_trap"]
+[ext_resource type="Script" uid="uid://bvv36o7f0oebf" path="res://scripts/hit_area_3d.gd" id="2_hit_area"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hit"]
+size = Vector3(1.4, 0.5, 1.4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jpyye"]
+size = Vector3(1.52, 0.285, 1.52)
+
+[node name="MovingTrap" type="AnimatableBody3D" unique_id=1779603060]
+collision_mask = 0
+script = ExtResource("1_svnl6")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=2121285731]
+mesh = ExtResource("1_trap")
+
+[node name="HitArea3D" type="Area3D" parent="." unique_id=1538633535]
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("2_hit_area")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HitArea3D" unique_id=213789869]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
+shape = SubResource("BoxShape3D_hit")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=474743154]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.083455026, 0)
+shape = SubResource("BoxShape3D_jpyye")
